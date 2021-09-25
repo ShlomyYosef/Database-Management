@@ -10,7 +10,7 @@ installation guide : <br>
 4.npm start<br>
 5.go to localhost:8080<br>
 
-also have sort ascending/descending
+also add sort ascending/descending
 
 The website must have the following features:<br>
 ● Show the existing clients ✅<br>
