@@ -7,7 +7,7 @@ var Client = require("./db/mongoose");
 router.get("/", function (req, res) {
   res.render("add", { message: "Fill the form" });
 });
-// add client if id valid and if ID doesn't exists in DB/
+// add client if id valid
 router.post("/", function (req, res) {
   const name = req.body.Name;
   const id = req.body.ID;
