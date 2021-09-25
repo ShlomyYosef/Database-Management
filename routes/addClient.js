@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const http = require("http");
 const isValidIsraeliID = require("../utils/isValidIsraeliID.util");
-const idExist = require("../utils/idExist.util");
 var Client = require("./db/mongoose");
 
 router.get("/", function (req, res) {
@@ -14,9 +13,8 @@ router.post("/", function (req, res) {
   const id = req.body.ID;
   if (!isValidIsraeliID(id)) {
     res.render("add", { message: "Error,Please enter valid ID" });
-  } else if (idExist(id)) {
-    res.render("add", { message: "Error,Client with this ID already exists" });
-  } else {
+  }
+   else {
     const ip = req.body.IP;
     const phoneNumber = "+972-" + req.body.Phone;
     var newClient;
@@ -48,12 +46,6 @@ router.post("/", function (req, res) {
   }
 });
 
-function idExist(id) {
-  // if id exist in DB
-  Client.find({ ID: id }, function (err, foundClient) {
-    if (foundClient != []) return false;
-  });
-  return true;
-};
+
 
 module.exports = router;
