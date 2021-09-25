@@ -1,0 +1,49 @@
+<%- include("components/header") -%> <%- include("components/navbar") -%>
+<h1>Add Client to the List</h1>
+<br />
+<h3><%= message %></h3>
+<br />
+<div class="row mb-3">
+  <form action="/add" method="POST" class="formadd">
+    <label for="">Name: </label>
+    <input
+      type="text"
+      name="Name"
+      placeholder="Full name"
+      required
+      pattern="[A-Z]{1}[a-z]{1,} [A-Z]{1}[a-z]{1,}"
+      title="Capitalize the first and last name"
+    /><br />
+    <label for="" class="idLabel">ID: </label>
+    <input
+      type="text"
+      placeholder="ID Number"
+      name="ID"
+      required
+      pattern="[0-9]{9}"
+      title="ID with 9 digits"
+    /><br />
+    <label for="" class="ipLabel">IP: </label>
+    <input
+      type="text"
+      placeholder="valid IP"
+      name="IP"
+      title="Only valid IP"
+      required
+      pattern="\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b"
+    /><br />
+    <label for="" class="phoneLabel">Phone: </label>
+    <input
+      type="text"
+      class="phone"
+      placeholder="+972XXXXXXXX"
+      name="Phone"
+      required
+      pattern="[0-5]{1}[0-9]{8}"
+      title="only numbers after +972 for example: 542839404"
+    /><br />
+    <input type="submit" value="submit" class="btn btn-primary submitAdd" />
+  </form>
+</div>
+<br /><br />
+<%- include("components/footer") -%>

@@ -1,0 +1,23 @@
+<div>
+  <table id="myTable" cellspacing="10">
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>IP</th>
+      <th>Phone</th>
+      <th>Country</th>
+      <th>City</th>
+    </tr>
+    <% clientList.forEach(function(client) { %>
+    <tr>
+      <td><%= client.Name %></td>
+      <td><%= client.ID %></td>
+      <td><%= client.IP %></td>
+      <td><%= client.Phone %></td>
+      <td><%= client.Country %></td>
+      <td><%= client.City %></td>
+    </tr>
+    <% }); %>
+  </table>
+</div>
+<br />

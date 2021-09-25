@@ -1,0 +1,71 @@
+body{
+    text-align: center;
+        background: #b2eb75;
+        color: #fff;
+}
+
+input[type=text],input[type=month],input[type=number], select, textarea {
+    width: 30%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+.formadd{
+    margin: 10px 15px;
+    padding: auto;
+}
+table {
+    text-align: left;
+    width: 640px;
+    margin: 30px auto;
+    border-radius: 3px;
+    background-color: #fff; 
+
+  }
+    th{
+      padding: 10px;
+      color: #434A54;
+    }
+  
+    tr:nth-child(odd){
+      background-color: #F5F7FA;
+    }
+    td{
+      padding: 10px 15px; 
+      color: #434A54;
+    }
+
+.phone{
+    margin-right: 20px;
+}
+.ipLabel{
+    margin-left: 25px;
+}
+.idLabel{
+    margin-left: 25px;
+}
+.phoneLabel{
+    margin-left: 14px;
+}
+.submitAdd{
+    width: 10%  ;
+    margin-left: 50px;
+
+}
+
+.buttonsMenu {
+    text-align: center;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.submitFilter{
+    width: 10%;
+    padding-bottom: 16px;
+    margin-bottom: 3px;
+}

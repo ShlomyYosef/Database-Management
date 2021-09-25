@@ -1,0 +1,16 @@
+<%- include("components/header") -%> <%- include("components/navbar") -%>
+<h3>Choose option to sort client list</h3>
+<br />
+<form action="/sort/ascending" method="POST">
+  <button class="btn btn-primary" type="sumbit" name="ascending">
+    Ascending
+  </button>
+</form>
+<br />
+<form action="/sort/descending" method="POST">
+  <button class="btn btn-primary" type="sumbit" name="descending">
+    Descending
+  </button>
+</form>
+<br />
+<%- include("components/footer") -%>
