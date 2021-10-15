@@ -4,10 +4,12 @@ using ejs,javascript,css.
 
 installation guide : <br>
 1.git clone https://github.com/ShlomyYosef/Database-Management.git <br>
-2.cd to new folder Humanz<br>
+2.cd to the new folder<br>
 3.npm install<br>
 4.npm start<br>
 5.go to localhost:8080<br>
+6. login as user to see clients list/login as Admin to add users.<br>
+
 
 ● Show the existing clients ✅<br>
 ● Add and remove a client✅<br>
