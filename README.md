@@ -1,6 +1,5 @@
 # Database-Management <br><br>
 
-Humanz - Home Assignment<br>
 using ejs,javascript,css.
 
 installation guide : <br>
