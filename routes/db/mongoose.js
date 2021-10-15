@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://Admin:12345@cluster0.0njoq.mongodb.net/Humanz");
+mongoose.connect(process.env.MONGODB);
 var Schema = mongoose.Schema;
 
 const clientSchema = new Schema({

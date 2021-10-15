@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-var Client = require("./db/mongoose");
+var Client = require("../db/mongoose");
 // get the list of all clients
 router.get("/", function (req, res) {
   Client.find({}, function (err, foundClients) {
