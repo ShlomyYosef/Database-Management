@@ -1,4 +1,4 @@
-# Humanz <br><br>
+# Database-Management <br><br>
 
 Humanz - Home Assignment<br>
 using ejs,javascript,css.
