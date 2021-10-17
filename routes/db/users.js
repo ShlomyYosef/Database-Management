@@ -4,8 +4,8 @@ mongoose.connect(process.env.MONGODB);
 var Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    Name: String,
-  Password: String
+  username: String,
+  password: String
 });
 userSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model("users", userSchema);

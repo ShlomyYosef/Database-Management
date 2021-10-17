@@ -17,6 +17,14 @@ app.use(express.urlencoded({ extended: true }));
 // Static assets
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static("public"));
+// use session 
+app.use(session({
+  secret: "secret",
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 // Mongoose
 var Client = require("./routes/db/mongoose");
 var User = require("./routes/db/users");
@@ -40,19 +48,14 @@ app.use("/home", clientListRoute);
 app.use("/admin", AdminRoute);
 app.use("/addUser", AdminAddUserRoute);
 
-// use session 
-
-app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: false
-}));
 
 passport.use(User.createStrategy());
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser())
-
+passport.serializeUser(function(User, done) {
+  done(null, User);
+});
+passport.deserializeUser(function(User, done) {
+  done(null, User);
+});
 // Home screen localhost:8080
 app.get("/",function(req,res)
 {
@@ -73,16 +76,10 @@ app.get("/add",function(req,err)
 app.post("/",function (req, res) {
   var userNameField = req.body.username;
   var passwordField = req.body.password;
-/*  const user = new User({
-    Name: userNameField,
-    Password: userNameField
-  })
-  req.login(user,function(err)
-  {*/
-    passport.authenticate("local");
   if (userNameField == "Admin") // admin login 
   {
     if(passwordField == "admin"){
+      passport.authenticate("local");
       User.find({}, function (err, foundUsers) {
     if (err) {
       console.log(err);
@@ -95,38 +92,32 @@ app.post("/",function (req, res) {
     }
   }
 // user login 
-  else{
-  User.findOne({Name: userNameField}, function(err, foundUser){
-    if(err){
-     throw(err);
-    }else{
-        if(foundUser)
-        {
-            bcrypt.compare(req.body.password, foundUser.Password, function(err, result) {
-                   if (result === true)
-                      {
-                        Client.find({}, function (err, foundClients) {
-                          if (err) {
-                            console.log(err);
-                          } else {
-                            res.render("home", { clientList: foundClients });
-                          }
-                      });
-                 }
-                else{
-                  res.render("login",{message: "wrong password"}) 
-                }});
-        }     
-        else {
-        res.render("login",{message: "user doesn't exists"})        
-      }
-  }});
-  
-}});
+else{
+  const user = new User({
+    username: userNameField,
+    email: passwordField
+});
+req.login(user, function(err) {
+    if (err) 
+    {
+         console.log(err);
+    }
+    else
+    passport.authenticate("local")(req,res, function()
+    {
+      Client.find({}, function (err, foundClients) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.render("home", { clientList: foundClients });
+        }
+      });
+    });
+  });
+}
+});
 
 // Listen
 app.listen(port, function () {
   console.log("server run at localhost:8080");
 });
-
-

@@ -3,6 +3,7 @@ const router = express.Router();
 var Client = require("../db/mongoose");
 
 router.get("/", function (req, res) {
+  req.logout();
   res.render("login",{message: ""});
 });
 
