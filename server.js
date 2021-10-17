@@ -76,23 +76,6 @@ app.get("/add",function(req,err)
 app.post("/",function (req, res) {
   var userNameField = req.body.username;
   var passwordField = req.body.password;
-  if (userNameField == "Admin") // admin login 
-  {
-    if(passwordField == "admin"){
-      passport.authenticate("local");
-      User.find({}, function (err, foundUsers) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("admin", { usersList: foundUsers });
-    }
-    });}
-    else{
-    res.render("login",{message: "wrong password"});
-    }
-  }
-// user login 
-else{
   const user = new User({
     username: userNameField,
     email: passwordField
@@ -102,9 +85,20 @@ req.login(user, function(err) {
     {
          console.log(err);
     }
-    else
+    else{
     passport.authenticate("local")(req,res, function()
     {
+      if (userNameField == "Admin") // admin login 
+      {
+        User.find({}, function (err, foundUsers) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.render("admin", { usersList: foundUsers });
+          }
+          });
+      }
+      else {
       Client.find({}, function (err, foundClients) {
         if (err) {
           console.log(err);
@@ -112,9 +106,10 @@ req.login(user, function(err) {
           res.render("home", { clientList: foundClients });
         }
       });
+    }
     });
+    }
   });
-}
 });
 
 // Listen

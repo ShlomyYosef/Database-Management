@@ -20,14 +20,12 @@
     <h4>remove client from the list by click on the checkbox</h4>
     <tr>
       <th>Name</th>
-      <th>Password</th>
       <th>Delete</th>
     </tr>
     <% usersList.forEach(function(user) { %>
-    <tr>
+    <tr> <% if (user.username != "Admin") { %>
       <form action="/admin" method="post">
-        <td><%= user.Name %></td>
-        <td><%= user.Password %></td>
+        <td><%= user.username %></td>
         <td>
           <input
             type="checkbox"
@@ -39,7 +37,7 @@
         </td>
       </form>
     </tr>
-    <% }); %>
+    <% }}); %>
   </table>
 </div>
 <br />

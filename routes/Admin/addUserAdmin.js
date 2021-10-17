@@ -1,12 +1,17 @@
 const express = require("express");
 const router = express.Router();
 var User = require("../db/users");
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 const passport = require("passport");
 
 router.get("/", function (req, res) {
+  if(req.isAuthenticated())
+  {
     res.render("addUser", { message: "" });
+  }
+  else{
+    console.log(User.username);
+    res.render("login", { message: "" });
+  }
   });
 
 
@@ -17,7 +22,7 @@ router.get("/", function (req, res) {
         res.redirect("/");
       }else{
         passport.authenticate("local")(req,res, function(){
-          res.redirect("/");
+          res.render("addUser",{ message: "user added successfully" });
       });
   }});
   
