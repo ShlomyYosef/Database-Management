@@ -5,13 +5,14 @@ const isValidIsraeliID = require("../../utils/isValidIsraeliID.util");
 var Client = require("../db/mongoose");
 const passport = require("passport");
 
+
 router.get("/", function (req, res) {
   if(req.isAuthenticated())
   {
     res.render("add", { message: "Fill the form" });
   }
   else{
-    res.render("login", { message: "user not authenticated" });
+    res.send("user not authenticated");
   }
 });
 
@@ -78,6 +79,5 @@ function isIdExists(id)
 }
 
 */
-
 
 module.exports = router;

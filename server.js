@@ -3,8 +3,8 @@ require('dotenv').config()
 const express = require("express");
 const app = express();
 const session = require('express-session');
+// Passport
 const passport = require("passport");
-const bcrypt = require('bcrypt');
 // Path
 const path = require("path");
 // Port
@@ -23,6 +23,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+// use passport
 app.use(passport.initialize());
 app.use(passport.session());
 // Mongoose
@@ -61,16 +62,6 @@ app.get("/",function(req,res)
 {
   res.render("login",{message: ""});
 });
-/*
-app.get("/add",function(req,err)
-{
-  if(req.isAuthenticated()) {
-    res.render("home");        
-} else {
-    res.redirect("/");
-}
-});
-*/
 
 // move this function to other location.
 app.post("/",function (req, res) {
@@ -83,11 +74,16 @@ app.post("/",function (req, res) {
 req.login(user, function(err) {
     if (err) 
     {
-         console.log(err);
+         console.log("err");
     }
     else{
-    passport.authenticate("local")(req,res, function()
+    passport.authenticate("local",{ failureRedirect: '/login'})(req,res, function(err)
     {
+      if(err)
+      {
+        console.log("errorr");
+
+      }
       if (userNameField == "Admin") // admin login 
       {
         User.find({}, function (err, foundUsers) {

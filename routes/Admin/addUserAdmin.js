@@ -6,10 +6,13 @@ const passport = require("passport");
 router.get("/", function (req, res) {
   if(req.isAuthenticated())
   {
+    const currentUser = req.user.username;
+    if(currentUser == "Admin")
+    {
     res.render("addUser", { message: "" });
+    }
   }
   else{
-    console.log(User.username);
     res.render("login", { message: "" });
   }
   });

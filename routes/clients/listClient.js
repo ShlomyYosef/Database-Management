@@ -15,7 +15,7 @@ router.get("/", function (req, res) {
   });
   }
   else{
-    res.render("login", { message: "user not authenticated" });
+    res.send("user not authenticated");
   }
 });
 
