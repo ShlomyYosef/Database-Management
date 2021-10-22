@@ -24,12 +24,8 @@ router.post("/", function (req, res) {
   if (!isValidIsraeliID(id)) {
     res.render("add", { message: "Error,Please enter valid ID" });
   }
-  /*if (isIdExists(id))
-  {
-    res.render("add", { message: "Error,ID already in the system" });
-  }
-  */
-   else {
+  else { 
+    console.log("here");
     const ip = req.body.IP;
     const phoneNumber = "+972" + req.body.Phone;
     var newClient;
@@ -60,24 +56,28 @@ router.post("/", function (req, res) {
     });
   }
 });
-/*
+
 function isIdExists(id)
 {
   Client.find({ID: id}, function (err, foundClients) {
-    if(foundClients.ID === id)
+    if(foundClients != undefined)
     {
-    console.log(JSON.stringify(foundClients));
+    var clientID = JSON.stringify(foundClients[0].ID);
+    clientID = clientID.replace(/"/g,'');
+    if(clientID === id)
+    { 
+      console.log("match");
       return true;
     }
     else
     {
-      console.log(JSON.stringify(foundClients));
+      console.log("not match");
       return false;
     }
-
+  }
+  else return true;
   });
 }
 
-*/
 
 module.exports = router;

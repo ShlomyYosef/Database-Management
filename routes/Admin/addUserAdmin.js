@@ -24,11 +24,9 @@ router.get("/", function (req, res) {
         console.log("Error in registering.",err);
         res.redirect("/");
       }else{
-        passport.authenticate("local")(req,res, function(){
-          res.render("addUser",{ message: "user added successfully" });
-      });
-  }});
-  
+           res.render("addUser",{ message: "user added successfully" });
+      }
+  });
   });
 
 module.exports = router;
