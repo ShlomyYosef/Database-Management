@@ -1,18 +1,19 @@
 <%- include("components/header") -%> 
-<body>
-  <h1>Welcome</h1>
-  <h3> Login</h3>
+<body><br><br>
+  <h1>Welcome</h1><br>
 <br><br><br>
+<h3> Login</h3>
   <h2><%= message %> </h2>
   <form action="/" method="POST">
     <div class="container">
       <label for="uname"><b>Email</b></label>
-      <input class="favemail" type="text" placeholder="Enter Username" name="username" required><br><br>
+      <input class="favemail" type="text" placeholder="Enter Username" name="username" required><br>
       <label for="psw"><b>Password</b></label>
-      <input class="favpassword" type="password" placeholder="Enter Password" name="password" required><br><br>
-      <button type="submit">Login</button>   
+      <input class="favpassword" type="password" placeholder="Enter Password" name="password" required><br>
+      <button class="btn btn-primary" type="submit" >Sign in</button>   
     </div> 
   </form>
 </div>
 </body>
 </html>
+
