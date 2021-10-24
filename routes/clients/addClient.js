@@ -3,8 +3,6 @@ const router = express.Router();
 const http = require("http");
 const isValidIsraeliID = require("../../utils/isValidIsraeliID.util");
 var Client = require("../db/mongoose");
-const passport = require("passport");
-
 
 router.get("/", function (req, res) {
   if(req.isAuthenticated())
@@ -16,16 +14,14 @@ router.get("/", function (req, res) {
   }
 });
 
-
 // add client if id valid
-router.post("/", function (req, res) {
+router.post("/",async function (req, res) {
   const name = req.body.Name;
   const id = req.body.ID;
   if (!isValidIsraeliID(id)) {
     res.render("add", { message: "Error,Please enter valid ID" });
-  }
+  } 
   else { 
-    console.log("here");
     const ip = req.body.IP;
     const phoneNumber = "+972" + req.body.Phone;
     var newClient;
@@ -54,30 +50,6 @@ router.post("/", function (req, res) {
         });
       });
     });
-  }
-});
-
-function isIdExists(id)
-{
-  Client.find({ID: id}, function (err, foundClients) {
-    if(foundClients != undefined)
-    {
-    var clientID = JSON.stringify(foundClients[0].ID);
-    clientID = clientID.replace(/"/g,'');
-    if(clientID === id)
-    { 
-      console.log("match");
-      return true;
-    }
-    else
-    {
-      console.log("not match");
-      return false;
-    }
-  }
-  else return true;
-  });
-}
-
+  }});
 
 module.exports = router;

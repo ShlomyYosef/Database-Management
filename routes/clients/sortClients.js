@@ -22,6 +22,7 @@ router.post("/ascending", function (req, res) {
     }
   }).sort({ Name: 1 });
 });
+
 // order descending DB
 router.post("/descending", function (req, res) {
   Client.find({}, function (err, foundClients) {

@@ -63,7 +63,7 @@ app.get("/",function(req,res)
   res.render("login",{message: ""});
 });
 
-// move this function to other location.
+// Login
 app.post("/",function (req, res) {
   var userNameField = req.body.username;
   var passwordField = req.body.password;
@@ -82,7 +82,6 @@ req.login(user, function(err) {
       if(err)
       {
         console.log("errorr");
-
       }
       if (userNameField == "Admin") // admin login 
       {

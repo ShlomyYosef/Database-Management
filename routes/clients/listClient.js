@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 var Client = require("../db/mongoose");
 
-
 router.get("/", function (req, res) {
   if(req.isAuthenticated())
   {

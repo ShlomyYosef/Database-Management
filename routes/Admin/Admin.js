@@ -25,8 +25,7 @@ router.get("/", function (req, res) {
   }
   });
 
-  
-
+// delete user 
 router.post("/", function (req, res) {
     const checkedUser = req.body.checkbox;
     User.findByIdAndDelete(checkedUser, function (err) {

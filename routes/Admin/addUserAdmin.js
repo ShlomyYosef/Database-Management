@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 var User = require("../db/users");
-const passport = require("passport");
 
 router.get("/", function (req, res) {
   if(req.isAuthenticated())
@@ -17,7 +16,7 @@ router.get("/", function (req, res) {
   }
   });
 
-
+// add user with permissions
   router.post("/", function(req,res){
     User.register({username:req.body.username},req.body.password,function(err,user){
       if(err){
