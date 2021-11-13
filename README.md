@@ -3,6 +3,10 @@
 Management DB based on user permissions set by the Admin user.<br>
 
 based on JavaScript with ejs,express,passport,http,router,MongoDB.<br>
+<br>
+Deploying with Heroku<br>
+https://databasemanagement1.herokuapp.com/
+<br>
 
 installation guide : <br>
 1.git clone https://github.com/ShlomyYosef/Database-Management.git <br>
@@ -10,7 +14,9 @@ installation guide : <br>
 3.npm install<br>
 4.npm start<br>
 5.go to localhost:8080<br>
-6. login as user to see clients list or login as Admin to add users.<br>
+6. login as user to see clients list or login as Admin to add users.<br><br>
+Admin<br> username: Admin <br>password: admin<br><br>
+User<br>username: shlomka<br> password: 123<br>
 
 Admin:<br>
 ● Show the existing Users ✅<br>
